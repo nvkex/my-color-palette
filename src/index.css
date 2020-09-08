@@ -8,6 +8,24 @@ body {
   background-image: url(/static/stars-opacity.0979c1.svg)
 }
 
+@media (max-width: 630px){
+  .main-grid{
+    margin: 40px 0px !important;
+  }
+}
+
+@media (max-width: 970px){
+  .main-grid{
+    margin: 40px 20px !important;
+  }
+}
+
+@media (max-width: 1260px){
+  .main-grid{
+    margin: 40px 60px !important;
+  }
+}
+
 
 
 /* NAVBAR */
