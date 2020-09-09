@@ -26,11 +26,23 @@ export default function LandingPage() {
         {
           defaultPalettes.length === 0 ?
             (
-              <div className="cssload-thecube">
-                <div className="cssload-cube cssload-c1"></div>
-                <div className="cssload-cube cssload-c2"></div>
-                <div className="cssload-cube cssload-c4"></div>
-                <div className="cssload-cube cssload-c3"></div>
+              <div className="cssload-container">
+                <div className="cssload-circle-1">
+                  <div className="cssload-circle-2">
+                    <div className="cssload-circle-3">
+                      <div className="cssload-circle-4">
+                        <div className="cssload-circle-5">
+                          <div className="cssload-circle-6">
+                            <div className="cssload-circle-7">
+                              <div className="cssload-circle-8">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ) :
             defaultPalettes.map((palette, i) => (
