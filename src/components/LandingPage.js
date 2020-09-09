@@ -15,7 +15,7 @@ export default function LandingPage() {
       setDefaultPaletes(res.data);
     })
     .catch(e => {console.log(e)});
-  })
+  }, [])
 
   return (
     <div>
