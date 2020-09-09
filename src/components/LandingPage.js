@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 
 
 export default function LandingPage() {
-  const serverURL = 'http://localhost:3001/default';
+  const serverURL = 'https://my-color-palette.herokuapp.com/default';
 
   const [defaultPalettes, setDefaultPaletes] = useState([]);
 
