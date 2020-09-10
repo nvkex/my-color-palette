@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Navbar from './Navbar';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { listDefaultPalettes } from '../actions/defPaletteActions';
+import { Link } from 'react-router-dom';
 
 
 
-export default function LandingPage() {
-  const serverURL = 'https://my-color-palette.herokuapp.com/default';
+export default function LandingPage(props) {
+  const defaultPalettes = useSelector(state => state.defaultPalettes);
 
-  const [defaultPalettes, setDefaultPaletes] = useState([]);
+  const { defaultPalettesList, loading } = defaultPalettes;
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(serverURL)
-      .then(res => {
-        setDefaultPaletes(res.data);
-      })
-      .catch(e => { console.log(e) });
-  }, [])
+    if (defaultPalettesList.length === 0)
+      dispatch(listDefaultPalettes());
+    return () => {
+    }
+  }, []);
 
   return (
     <div>
-      <Navbar />
 
       <div className="main-grid">
 
         {
-          defaultPalettes.length === 0 ?
+          loading ?
             (
               <div className="cssload-container">
                 <div className="cssload-circle-1">
@@ -45,15 +46,15 @@ export default function LandingPage() {
                 </div>
               </div>
             ) :
-            defaultPalettes.map((palette, i) => (
-              <a key={i} className="pallete-card shadow" href="/">
+            defaultPalettesList.map((palette, i) => (
+              <Link key={i} className="pallete-card shadow" to={`/palette/${palette.id}`}>
                 <div className="pallete-sm">
                   {palette.colors.map((color, index) => (
                     <div key={index} className="pallete-sm-item" style={{ backgroundColor: color }} ></div>
                   ))}
                 </div>
                 <span className="pallete-desc">{palette.name}</span>
-              </a>
+              </Link>
             ))
         }
 
