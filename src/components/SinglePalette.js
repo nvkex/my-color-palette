@@ -46,7 +46,9 @@ export default function SinglePalette(props) {
       dispatch(listDefaultPalettes());
     return () => {
     }
-  }, []);
+  }, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  []);
 
   const palleteID = props.match.params.id;
   var currentPalette = [];

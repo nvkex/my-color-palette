@@ -12,12 +12,15 @@ export default function LandingPage(props) {
 
   const dispatch = useDispatch();
 
+  
   useEffect(() => {
     if (defaultPalettesList.length === 0)
       dispatch(listDefaultPalettes());
     return () => {
     }
-  }, []);
+  }, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [0]);
 
   return (
     <div>
