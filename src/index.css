@@ -54,6 +54,12 @@ body {
   color:#2c3a47cc;
 }
 
+.navbar button{
+  border: 0;
+  outline: 0;
+  background-color: inherit;
+}
+
 /* NAVBAR end */
 
 
@@ -113,3 +119,37 @@ body {
 }
 
 /* MAIN GRID in LANDING PAGE end*/
+
+/* Single Palette View */
+
+.full-palette{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: 100%;
+  width:100%;
+}
+
+.color-box{
+  height: 23.1vh;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-box:hover .copy-btn{
+  opacity: 1;
+}
+
+.color-box .copy-btn{
+  transition: 0.2s;
+  opacity: 0;
+  background: rgba(0,0,0,.1);
+  color: white;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,.2);
+  padding: 6px 14px; 
+}
+
+/* Single Pallete View end */
