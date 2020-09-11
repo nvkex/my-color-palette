@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage';
-import SignUp from './components/SignUp';
-import Login from './components/Login';
+import SignUp from './components/Forms/Signup';
+import Login from './components/Forms/Login';
 import SinglePalette from './components/SinglePalette';
 import Navbar from './components/Navbar';
 
