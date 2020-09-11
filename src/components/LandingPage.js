@@ -62,6 +62,8 @@ export default function LandingPage(props) {
         }
 
       </div>
+
+      <Link to="/login">Login</Link>
     </div>
   );
 }
