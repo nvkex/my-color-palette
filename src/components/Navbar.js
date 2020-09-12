@@ -13,7 +13,7 @@ const Navbar = ({history}) => {
             <button onClick={backHandler}>← Back</button>
             <span className="title"><i>My Color Palette</i></span>
             <span>
-                <a href="https://www.github.com/nvkex" target='_blank' rel="noopener noreferrer">
+                <a href="https://github.com/nvkex/my-color-palette" target='_blank' rel="noopener noreferrer">
                     <i
                         className="fa fa-github"
                         style={{ fontSize: '30px' }}
