@@ -26,6 +26,8 @@ const Login = () => {
                 axios.post('https://my-color-palette.herokuapp.com/auth/login', formData)
                     .then(res => {
                         dispatch(loginUser(res.status, res.data.user, res.data.token));
+                        localStorage.setItem('token',res.data.token);
+                        localStorage.setItem('user',JSON.stringify(res.data.user));
                     })
                     .catch(err => {
                         console.log(err);
