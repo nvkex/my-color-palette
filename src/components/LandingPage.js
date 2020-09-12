@@ -68,13 +68,19 @@ export default function LandingPage(props) {
 
       <div className="bottom-panel">
 
-        <div className="btn-groups shadow-lg">
-          <Link to="/login"><button>Login</button></Link>
-          {
-            token? <Link to="/dashboard"><button>Dashboard</button></Link> : null
-          }
-          <Link to="/signup"><button>Register</button></Link>
-        </div>
+        {
+          token ? (
+            <div className="btn-groups shadow-lg">
+              <Link to="/dashboard"><button>Dashboard</button></Link>
+              <Link to="/logout"><button>Logout</button></Link>
+            </div>
+          ) : (
+              <div className="btn-groups shadow-lg">
+                <Link to="/login"><button>Login</button></Link>
+                <Link to="/signup"><button>Register</button></Link>
+              </div>
+            )
+        }
 
       </div>
 
