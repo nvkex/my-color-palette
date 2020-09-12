@@ -12,15 +12,15 @@ export default function LandingPage(props) {
 
   const dispatch = useDispatch();
 
-  
+
   useEffect(() => {
     if (defaultPalettesList.length === 0)
       dispatch(listDefaultPalettes());
     return () => {
     }
-  }, 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [0]);
+  },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [0]);
 
   return (
     <div>
@@ -63,7 +63,15 @@ export default function LandingPage(props) {
 
       </div>
 
-      <Link to="/login">Login</Link>
+      <div className="bottom-panel">
+
+        <div className="btn-groups shadow-lg">
+          <Link to="/login"><button>Login</button></Link>
+          <Link to="/signup"><button>Register</button></Link>
+        </div>
+
+      </div>
+
     </div>
   );
 }
