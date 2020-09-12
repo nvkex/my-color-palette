@@ -53,15 +53,15 @@ const Login = () => {
                 <h3 className="text-center">Welcome Back!</h3>
                 <label>Username</label>
                 <input type="text" name="email" placeholder="Username/Email" id="email" />
-                <br />
+                <label />
                 <label>Password</label>
-                <input type="text" name="password" placeholder="" id="password" />
+                <input type="text" name="password" placeholder="No one's looking." id="password" />
 
                 <span>
                     <a href="/">Forgot password?</a>
                 </span>
 
-                <br />
+                <label /><label />
                 <input type="submit" value="Login" id="submitForm" />
             </form>
         </div>

@@ -14,7 +14,7 @@ const Signup = () => {
                 <label>Confirn Password</label>
                 <input type="text" name="cnfPass" placeholder="" />
                 
-
+                <label></label>
                 <br />
                 <input type="submit" value="Signup" />
             </form>
