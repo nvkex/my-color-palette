@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 
 
 export default function LandingPage(props) {
-  const defaultPalettes = useSelector(state => state.defaultPalettes);
 
+  const auth = useSelector(state => state.authReducer);
+  const { token } = auth;
+
+  const defaultPalettes = useSelector(state => state.defaultPalettes);
   const { defaultPalettesList, loading } = defaultPalettes;
 
   const dispatch = useDispatch();
@@ -67,6 +70,9 @@ export default function LandingPage(props) {
 
         <div className="btn-groups shadow-lg">
           <Link to="/login"><button>Login</button></Link>
+          {
+            token? <Link to="/dashboard"><button>Dashboard</button></Link> : null
+          }
           <Link to="/signup"><button>Register</button></Link>
         </div>
 
