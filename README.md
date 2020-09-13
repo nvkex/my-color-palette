@@ -4,7 +4,7 @@ Save and access your favorite color combinations into palettes!
 
 ------------
 #### Deploy Status
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c6828fb6-4339-4f2e-8192-b69a40ebcd95/deploy-status)](https://app.netlify.com/sites/my-color-palette/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c6828fb6-4339-4f2e-8192-b69a40ebcd95/deploy-status)](https://app.netlify.com/sites/my-color-palette/deploys) [![Build Status](https://travis-ci.com/nvkex/my-color-palette-backend.svg?token=4Dazqqpmc6MMUuJzxwAK&branch=master)](https://travis-ci.com/nvkex/my-color-palette-backend)
 
 ------------
 
