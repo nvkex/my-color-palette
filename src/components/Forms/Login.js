@@ -15,9 +15,13 @@ const Login = () => {
     useEffect(() => {
 
         function submitForm() {
+            const loader = document.querySelector('.lds-ring');
             const submitBtn = document.querySelector('#submitForm');
             submitBtn.addEventListener('click', (e) => {
+
                 e.preventDefault();
+
+                loader.style.display = 'inline-block';
 
                 const email = document.querySelector('#email').value;
                 const password = document.querySelector('#password').value;
@@ -26,12 +30,16 @@ const Login = () => {
                 axios.post('https://my-color-palette.herokuapp.com/auth/login', formData)
                     .then(res => {
                         dispatch(loginUser(res.status, res.data.user, res.data.token));
-                        localStorage.setItem('token',res.data.token);
-                        localStorage.setItem('user',JSON.stringify(res.data.user));
+                        localStorage.setItem('token', res.data.token);
+                        localStorage.setItem('user', JSON.stringify(res.data.user));
+                        loader.style.display = 'none';
                     })
                     .catch(err => {
                         console.log(err);
+                        loader.style.display = 'none';
                     })
+
+                
             });
         }
 
@@ -57,7 +65,7 @@ const Login = () => {
                 <input type="text" name="email" placeholder="Username/Email" id="email" />
                 <label />
                 <label>Password</label>
-                <input type="text" name="password" placeholder="No one's looking." id="password" />
+                <input type="password" name="password" placeholder="No one's looking." id="password" />
 
                 <span>
                     <a href="/">Forgot password?</a>
@@ -65,6 +73,8 @@ const Login = () => {
 
                 <label /><label />
                 <input type="submit" value="Login" id="submitForm" />
+                <label></label>
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
             </form>
         </div>
     )
