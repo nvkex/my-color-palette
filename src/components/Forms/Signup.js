@@ -87,7 +87,7 @@ const Signup = (props) => {
                 <label></label>
                 <input type="submit" value="Signup" onClick={(e) => formHandler(props, e)} />
                 <label></label>
-                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
             </form>
         </div>
     )

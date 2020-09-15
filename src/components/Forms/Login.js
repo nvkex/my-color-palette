@@ -74,7 +74,7 @@ const Login = () => {
                 <label /><label />
                 <input type="submit" value="Login" id="submitForm" />
                 <label></label>
-                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
             </form>
         </div>
     )
