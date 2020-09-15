@@ -6,9 +6,10 @@ const dotenv = require('dotenv').config();
 
 // Route Dependencies
 const defaultRouter = require('./routes/default');
+const authRouters = require('./routes/auth');
 
 const app = express();
-const PORT = 3001 || process.env.PORT;
+const PORT = process.env.PORT || 3001;
 
 // Middlewares
 app.use(cors());
@@ -36,6 +37,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 // Routes
 app.use('/', defaultRouter);
+app.use('/auth',authRouters);
 
 // Listen on a port
 app.listen(PORT, () => {
