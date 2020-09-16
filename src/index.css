@@ -14,24 +14,22 @@ body {
   background-image: url(/static/stars-opacity.0979c1.svg);
 }
 
+
 @media (max-width: 630px) {
   .main-grid {
     margin: 40px 0px !important;
-    margin-top: 120px !important;
   }
 }
 
-@media (max-width: 970px) {
+@media (max-width: 970px) and (min-width: 630px){
   .main-grid {
     margin: 40px 20px !important;
-    margin-top: 120px !important;
   }
 }
 
-@media (max-width: 1260px) {
+@media (max-width: 1260px) and (min-width: 970px) {
   .main-grid {
     margin: 40px 60px !important;
-    margin-top: 120px !important;
   }
 }
 
@@ -75,7 +73,6 @@ body {
 .main-grid {
   transition: 0.4s;
   margin: 40px 140px;
-  margin-top: 120px;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -165,8 +162,8 @@ body {
 
 .bottom-panel {
   width: 100%;
-  position: absolute;
-  top: 90px;
+  position: relative;
+  margin-top: 40px;
 }
 
 .btn-groups {
@@ -174,6 +171,7 @@ body {
   width: 72.5vw;
   min-width: 323px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 0 20px;
   border-radius: 6px;
@@ -185,7 +183,7 @@ body {
   border-radius: 0px;
   outline: 0;
   border: 0;
-  padding: 16px 40px;
+  padding: 16px 30px;
   background-color: inherit;
 }
 
