@@ -12,6 +12,11 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from './actions/AuthActions';
 import axios from 'axios';
 
+/**
+ * Verifies token and logs in the user per session.
+ * If token expired, the user is logged out.
+ * @param {Object} props 
+ */
 function App(props) {
 
   const URL = "https://my-color-palette.herokuapp.com";
