@@ -3,6 +3,12 @@ import {
     LOGOUT
 } from '../constants/AuthConstants';
 
+/**
+ * 
+ * @param {Object} state - previous state
+ * @param {Const} action - type of action to perform
+ * @returns {Object} - Returns the new state according to actions
+ */
 function authReducer(state = { user: {}, token:null }, action) {
     switch (action.type) {
         case LOGIN:

@@ -4,6 +4,11 @@ import {
     DEFAULT_PALETTES_FAIL
 } from '../constants/defaultPalettesConstants';
 
+/**
+ * Get default palettes from payload and save it in the store.
+ * @param {Object} state - Current state
+ * @param {Object} action - dispatched actions
+ */
 function defaultPalettesReducer(state = { defaultPalettesList: [] }, action) {
     switch (action.type) {
         case DEFAULT_PALETTES_REQUEST:

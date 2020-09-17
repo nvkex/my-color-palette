@@ -5,6 +5,9 @@ import {
     DEFAULT_PALETTES_FAIL
 } from '../constants/defaultPalettesConstants';
 
+/**
+ * Gets all the default palettes from API 
+ */
 const listDefaultPalettes = () => async (dispatch) => {
     try {
         dispatch({ type: DEFAULT_PALETTES_REQUEST });
