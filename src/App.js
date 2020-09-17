@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage';
 import SignUp from './components/Forms/Signup';
@@ -11,6 +11,7 @@ import Logout from './components/User/Logout';
 import { useDispatch } from 'react-redux';
 import { loginUser } from './actions/AuthActions';
 import axios from 'axios';
+import NewPalette from './components/User/NewPalette';
 
 /**
  * Verifies token and logs in the user per session.
@@ -31,10 +32,11 @@ function App(props) {
     // Check token expiry
     axios.get(`${URL}/auth/check-token-expiry?token=${token}`)
       .then(res => {
+        console.log(res.data.expired)
         if (res.data.expired) {
           token = null;
           user = null;
-          return <Redirect to="/logout" />
+          props.history.push('/logout');
         }
       })
       .catch(err => {
@@ -49,6 +51,7 @@ function App(props) {
       <Navbar history={props.history} />
       <div>
         <Switch>
+          <Route exact path="/new-palette" component={NewPalette} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
@@ -62,4 +65,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default withRouter(App);
