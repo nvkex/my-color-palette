@@ -29,7 +29,7 @@ export default function LandingPage(props) {
 
 
   useEffect(() => {
-    if (defaultPalettesList.length === 0)
+    if (!defaultPalettesList || defaultPalettesList.length === 0)
       dispatch(listDefaultPalettes());
     return () => {
     }
@@ -64,7 +64,7 @@ export default function LandingPage(props) {
       <div className="main-grid">
 
         {
-          loading ?
+          loading || !defaultPalettesList ?
             (
               <div className="cssload-container">
                 <div className="cssload-circle-1">
