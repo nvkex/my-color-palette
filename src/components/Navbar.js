@@ -1,6 +1,10 @@
 import React from 'react'
 import { withRouter } from 'react-router'
 
+/**
+ * Fixed navbar for all pages
+ * @param {Object} history - To redirect user using 'goBack()'
+ */
 const Navbar = ({history}) => {
 
     

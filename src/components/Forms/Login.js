@@ -14,6 +14,11 @@ const Login = () => {
 
     useEffect(() => {
 
+        /**
+         * Validate and submit form
+         * If login successful, dispatch loginUser and save user info and token to local storage variables.
+         * If user is already logged in, redirect to homepage.
+         */
         function submitForm() {
             const loader = document.querySelector('.lds-ring');
             const submitBtn = document.querySelector('#submitForm');

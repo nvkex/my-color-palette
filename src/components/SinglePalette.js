@@ -3,18 +3,32 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { listDefaultPalettes } from '../actions/defPaletteActions';
 
-// Convery a number to HEX
+
+/**
+ * Converts a number to HEX
+ * @param {Number} c - Number to be converted to hex code
+ */
 function componentToHex(c) {
   let hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
 }
 
-// convert RBG color to HEX color
+
+/**
+ * convert RBG color to HEX color
+ * @param {Number} r - Number corresponding to Red
+ * @param {Number} g - Number corresponding to Green
+ * @param {Number} b - Number corresponding to Blue
+ */
 const rgbToHex = (r, g, b) => {
   return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
-// Handle click on copy to copy the hex value of color
+
+/**
+ * Handle click on 'copy' to copy the hex value of color
+ * @param {Object} e - target DOM element
+ */
 const handleCopy = (e) => {
   const rgb = e.nativeEvent.target.parentElement.style.backgroundColor;
   const rgbArr = rgb.substring(4, rgb.length - 1).split(',')
@@ -34,6 +48,10 @@ const handleCopy = (e) => {
     })
 }
 
+/**
+ * Displays the color combination by palette ID.
+ * @param {Object} props - default object passed by react
+ */
 export default function SinglePalette(props) {
   const defaultPalettes = useSelector(state => state.defaultPalettes);
 

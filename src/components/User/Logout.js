@@ -9,6 +9,7 @@ export default function Logout() {
     const { token } = auth;
     const dispatch = useDispatch();
 
+    // Dispatch logout and clear local storage variables.
     useEffect(() => {
         dispatch(logoutUser());
         localStorage.removeItem('token');

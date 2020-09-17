@@ -4,7 +4,9 @@ import { listDefaultPalettes } from '../actions/defPaletteActions';
 import { Link } from 'react-router-dom';
 
 
-
+/**
+ * Loads the predefined palettes and navigation panel
+ */
 export default function LandingPage(props) {
 
   // SVG constants

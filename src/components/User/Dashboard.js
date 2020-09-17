@@ -8,6 +8,7 @@ export default function Dashboard() {
   const auth = useSelector(state => state.authReducer);
   const { token, user } = auth;
 
+  // If user is not logged in, redirect to login page
   if (!token || !user) {
     return <Redirect to="/login" />
   }

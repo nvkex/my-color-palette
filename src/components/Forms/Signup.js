@@ -2,6 +2,12 @@ import axios from 'axios';
 import React from 'react'
 import { withRouter } from 'react-router';
 
+/**
+ * Validate and submit form
+ * On successful signup, redirect to login page
+ * @param {Object} props - Signup component props (used for redirection)
+ * @param {Object} e - Element's event properties
+ */
 const formHandler = async (props, e) => {
 
     const URL = "https://my-color-palette.herokuapp.com";
@@ -16,6 +22,7 @@ const formHandler = async (props, e) => {
     const cnfPassword = document.querySelector('#cnfPass').value;
     const formData = { name, email, password };
 
+    // When user submits form with empty fields
     if (!password || !cnfPassword || !email || !name) {
         alert('Fields cannot be empty!');
         return;
