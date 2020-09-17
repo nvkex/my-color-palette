@@ -37,9 +37,10 @@ Save your favorite color combinations into palettes and access them anytime.
 * [x] User Authentication
 * [ ] User Authorization
 * [x] User Registration
-* [ ] Expire authentication token
+* [x] Expire authentication token
 * [ ] Create custom palettes
 * [ ] Update/Delete custom palettes
+* [ ] Add custom palettes as favorite
 * [ ] Admin Panel
 
 ## How to contribute
