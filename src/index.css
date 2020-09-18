@@ -393,6 +393,12 @@ body {
   margin-right: 6px;
 }
 
+.new-color-preview{
+  border:1px solid lightgrey;
+  width:80px;
+  height: 40px;
+}
+
 #delColor{
   border-radius: 50%;
   outline: none;
