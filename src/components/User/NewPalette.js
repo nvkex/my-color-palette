@@ -1,8 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 
 export default function NewPalette() {
 
-  const [colors, setColors] = useState(["#2e4235"]);
+  const [colors, setColors] = useState([]);
+
+
+  const handleAddColor = (e) => {
+    e.preventDefault();
+    const colorHex = document.querySelector('#colorHex');
+
+    if(colorHex.value && colors.length !== 20){
+      setColors([...colors, colorHex.value]);
+      colorHex.value = "";
+    }
+  }
+
+  const handleDelColor = (e) => {
+    e.preventDefault();
+  }
+
+  const handleClearColors = (e) => {
+    e.preventDefault();
+  }
+
+
+  useEffect(() => {
+
+
+    return () => { };
+  },
+    [])
 
   return (
     <div className="new-palette-container shadow-lg">
@@ -15,7 +43,7 @@ export default function NewPalette() {
           <label></label>
           <span>
             <input type="text" placeholder="Color hex" id="colorHex" />
-            <button>Add</button>
+            <button id="#addColor" onClick={(e) => handleAddColor(e)}>Add</button>
           </span>
 
           <label></label>
@@ -23,7 +51,7 @@ export default function NewPalette() {
 
           <div className="action-btns">
             <button id="createBtn">Create</button>
-            <button id="cancelBtn">Cancel</button>
+            <button id="cancelBtn" onClick={(e) => handleClearColors(e)}>Clear</button>
           </div>
 
         </form>
@@ -44,87 +72,19 @@ export default function NewPalette() {
           </div>
 
           <div className="color-code-list">
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
 
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
-            <div className="color-code-container">
-              <span className="color-code">#2e4235</span> &nbsp;
-              <button id="delColor">x</button>
-            </div>
+            {
+              colors.length === 0 ?
+                null
+                :
+                colors.map((color, index) => (
+                  <div className="color-code-container" key={index}>
+                    <span className="color-code">{color}</span> &nbsp;
+                    <button id="delColor" onClick={(e) => handleDelColor(e)}>x</button>
+                  </div>
+                ))
+            }
+
 
           </div>
 
