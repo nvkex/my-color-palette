@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router';
 
 
 export default function NewPalette() {
 
+  const auth = useSelector(state => state.authReducer);
+  const {token, user} = auth;
+  if (!token || !user) {
+    return <Redirect to="/login" />
+  }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [colors, setColors] = useState([]);
 
   /**
