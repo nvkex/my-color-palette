@@ -1,25 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 
 export default function NewPalette() {
 
   const [colors, setColors] = useState([]);
 
-
+  /**
+   * Add the color in input box to the state and therefore to the palette.
+   * @param {Object} e - passed by default
+   */
   const handleAddColor = (e) => {
     e.preventDefault();
     const colorHex = document.querySelector('#colorHex');
 
-    if(colorHex.value && colors.length !== 20){
+    if (colorHex.value && colors.length !== 20) {
       setColors([...colors, colorHex.value]);
       colorHex.value = "";
     }
   }
 
-  const handleDelColor = (e) => {
+  /**
+   * Delete the color from state and therefore from palette.
+   * @param {Object} e - passed by default
+   * @param {String} color - hex code of color to be deleted from palette
+   */
+  const handleDelColor = (e, color) => {
     e.preventDefault();
+
+    // eslint-disable-next-line eqeqeq
+    setColors([...colors.filter(c => c != color)])
   }
 
+  /**
+   * Delete all colors from state and therefore from palette.
+   * Basically set the state to an empty array.
+   * @param {Object} e - passed by default
+   */
   const handleClearColors = (e) => {
     e.preventDefault();
 
@@ -27,12 +43,6 @@ export default function NewPalette() {
   }
 
 
-  useEffect(() => {
-
-
-    return () => { };
-  },
-    [])
 
   return (
     <div className="new-palette-container shadow-lg">
@@ -82,11 +92,10 @@ export default function NewPalette() {
                 colors.map((color, index) => (
                   <div className="color-code-container" key={index}>
                     <span className="color-code">{color}</span> &nbsp;
-                    <button id="delColor" onClick={(e) => handleDelColor(e)}>x</button>
+                    <button id="delColor" onClick={(e) => handleDelColor(e, color)}>x</button>
                   </div>
                 ))
             }
-
 
           </div>
 
