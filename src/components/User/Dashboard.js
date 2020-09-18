@@ -35,7 +35,7 @@ export default function Dashboard() {
             Total Palettes
           </p>
           <p className="text-muted">
-            7
+            0
           </p>
 
           <Link to="/my-palettes">
@@ -47,7 +47,7 @@ export default function Dashboard() {
             </button>
           </Link>
           <br />
-          <Link to="/">
+          <Link to="/new-palette">
             <button>
               <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -66,7 +66,7 @@ export default function Dashboard() {
             Total Palettes
           </p>
           <p className="text-muted">
-            4
+            0
           </p>
 
           <Link to="/favorites">
