@@ -22,6 +22,8 @@ export default function NewPalette() {
 
   const handleClearColors = (e) => {
     e.preventDefault();
+
+    setColors([]);
   }
 
 
