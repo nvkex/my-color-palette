@@ -346,9 +346,6 @@ body {
   outline: none;
 }
 
-.form-container form #title{
-  width:73.5%;
-}
 
 .form-container form button, #createBtn, #cancelBtn{
   color:white;
@@ -377,6 +374,36 @@ body {
 .action-btns{
   display: flex;
   flex-wrap: wrap;
+}
+
+.color-preview-section .pallete-card:hover{
+  box-shadow: none !important;
+} 
+
+.color-code-list{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 160px;
+}
+
+.color-code-container{
+  margin-top: 4px;
+  margin-right: 6px;
+}
+
+#delColor{
+  border-radius: 50%;
+  outline: none;
+  background-color: inherit;
+  border: 1px solid lightcoral;
+  color: lightcoral;
+}
+
+#delColor:hover{
+  background-color: lightcoral;
+  color: white;
 }
 
 /* End */
