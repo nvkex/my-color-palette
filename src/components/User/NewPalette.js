@@ -42,6 +42,14 @@ export default function NewPalette() {
     setColors([]);
   }
 
+  /**
+   * Show preview of the color code being typed in the input box
+   */
+  const handleColorPreview = () => {
+    const newColor = document.querySelector('#colorHex').value;
+    document.querySelector('.new-color-preview').style.backgroundColor = newColor;
+  }
+
 
 
   return (
@@ -54,9 +62,14 @@ export default function NewPalette() {
           <label></label>
           <label></label>
           <span>
-            <input type="text" placeholder="Color hex" id="colorHex" />
+            <input type="text" placeholder="Color hex" id="colorHex" onChange={handleColorPreview} />
             <button id="#addColor" onClick={(e) => handleAddColor(e)}>Add</button>
           </span>
+
+          <label></label>
+          <label></label>
+
+          <div className="new-color-preview text-center"></div>
 
           <label></label>
           <label></label>
