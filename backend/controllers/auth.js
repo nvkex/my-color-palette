@@ -86,7 +86,7 @@ exports.checkEmail = (req,res) => {
 }
 
 exports.checkTokenExpiry = (req, res) => {
-    const ONE_HOUR = 216000;
+    const ONE_HOUR = 12960000;
     const currentDate = new Date().getTime();
 
     const {token} = req.query;
