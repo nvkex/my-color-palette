@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage';
@@ -27,24 +27,32 @@ function App(props) {
 
   const dispatch = useDispatch();
 
-  if (token && user) {
+  useEffect(() => {
 
-    // Check token expiry
-    axios.get(`${URL}/auth/check-token-expiry?token=${token}`)
-      .then(res => {
-        console.log(res.data.expired)
-        if (res.data.expired) {
-          token = null;
-          user = null;
-          props.history.push('/logout');
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      })
-    
-    dispatch(loginUser(200, user, token));
-  }
+    if (token && user) {
+
+      // Check token expiry
+      axios.get(`${URL}/auth/check-token-expiry?token=${token}`)
+        .then(res => {
+          console.log(res.data.expired)
+          if (res.data.expired) {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            token = null;
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            user = null;
+            props.history.push('/logout');
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
+      dispatch(loginUser(200, user, token));
+    }
+
+    return () => { };
+  },
+    []);
 
   return (
     <div>
