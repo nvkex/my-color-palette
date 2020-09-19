@@ -68,7 +68,6 @@ export default function NewPalette() {
       id: user._id,
       name: user.name
     }
-    const createdOn = new Date().getTime();
 
     if (colors.length !== 20){
       alert('Please add exactly 20 colors to the palette')
@@ -83,8 +82,7 @@ export default function NewPalette() {
     const data = {
       title,
       author,
-      colors,
-      createdOn
+      colors
     }
 
     // Submit data
