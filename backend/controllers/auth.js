@@ -22,10 +22,10 @@ exports.signupController = async (req, res) => {
 
     try{
         const saveUser = await newUser.save();
-        res.send({name:saveUser.name});
+        res.send({status:200});
     }
     catch(err){
-        res.status(400).send(err);
+        res.send({status: 400});
     }
 }
 
@@ -47,7 +47,8 @@ exports.loginController = async (req, res) => {
     const token = jwt.sign(
         {
             id: user._id,
-            name: user.name
+            name: user.name,
+            iat: new Date().getTime()
         },
         process.env.JWT_TOKEN
     );
@@ -68,4 +69,30 @@ exports.verifyToken = (req, res) => {
     catch(err){
         res.status(400).send({verified: false});
     }
+}
+
+exports.checkEmail = (req,res) => {
+    const {email} = req.query;
+    User.findOne({email})
+    .then(data => {
+        if(data)
+            res.send({exists: true});
+        else
+            res.send({exists: false});
+    })
+    .catch(err => {
+        res.send({error: err});
+    })
+}
+
+exports.checkTokenExpiry = (req, res) => {
+    const ONE_HOUR = 216000;
+    const currentDate = new Date().getTime();
+
+    const {token} = req.query;
+    const decodedToken = jwt.verify(token, process.env.JWT_TOKEN);
+    
+    if(currentDate - decodedToken.iat > ONE_HOUR)
+        res.send({expired: true});
+    res.send({expired: false});
 }
