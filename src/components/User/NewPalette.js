@@ -6,7 +6,7 @@ import { Redirect } from 'react-router';
 export default function NewPalette() {
 
   const auth = useSelector(state => state.authReducer);
-  const {token, user} = auth;
+  const { token, user } = auth;
   if (!token || !user) {
     return <Redirect to="/login" />
   }
@@ -60,6 +60,40 @@ export default function NewPalette() {
   }
 
 
+  const handleCreatePalette = (e) => {
+
+    e.preventDefault();
+    const title = document.querySelector('#title').value;
+    const author = {
+      id: user._id,
+      name: user.name
+    }
+    const createdOn = new Date().getTime();
+
+    if (colors.length !== 20){
+      alert('Please add exactly 20 colors to the palette')
+      return;
+    }
+
+    if(!title){
+      alert('Title is required!')
+      return;
+    }
+
+    const data = {
+      title,
+      author,
+      colors,
+      createdOn
+    }
+
+    // Submit data
+    if (colors.length === 20 && title && user && token) {
+      console.log(data);
+    }
+  }
+
+
 
   return (
     <div className="new-palette-container shadow-lg">
@@ -67,7 +101,7 @@ export default function NewPalette() {
 
       <div className="form-container">
         <form>
-          <input type="text" placeholder="Title" id="title" />
+          <input type="text" placeholder="Title" id="title" required />
           <label></label>
           <label></label>
           <span>
@@ -82,9 +116,12 @@ export default function NewPalette() {
 
           <label></label>
           <label></label>
+          <label className="text-danger">*Only 20 colors are allowed per palette.</label>
+          <label></label>
+          <label></label>
 
           <div className="action-btns">
-            <button id="createBtn">Create</button>
+            <button id="createBtn" onClick={(e) => handleCreatePalette(e)}>Create</button>
             <button id="cancelBtn" onClick={(e) => handleClearColors(e)}>Clear</button>
           </div>
 
