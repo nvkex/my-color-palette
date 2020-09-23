@@ -60,7 +60,14 @@ export default function NewPalette() {
     document.querySelector('.new-color-preview').style.backgroundColor = newColor;
   }
 
-
+  /**
+   * Verify and submit for new palette creation
+   * @param {Object} e - passed by default
+   * 
+   * Handling server responses:
+   * res.data.success is true -> Palette Creates
+   * res.data.success is false -> Error occured
+   */
   const handleCreatePalette = (e) => {
 
     e.preventDefault();
@@ -80,6 +87,7 @@ export default function NewPalette() {
       return;
     }
 
+    // Data to be send to server
     const data = {
       title,
       author,
@@ -91,6 +99,7 @@ export default function NewPalette() {
     if (colors.length <= 20 && title && user && token) {
       axios.post('https://my-color-palette.herokuapp.com/user/new-palette', data)
       .then(res => {
+        
         // Creation successfull when res.data.success is true
         if(res.data.success)
           alert('Success!');
