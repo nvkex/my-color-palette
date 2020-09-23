@@ -33,6 +33,15 @@ body {
   }
 }
 
+.spinner{
+  display: none;
+  margin: 20px 0;
+}
+.spinner .lds-ring{
+  display: block;
+  margin: 8px 0;
+}
+
 /* NAVBAR */
 
 .title {
