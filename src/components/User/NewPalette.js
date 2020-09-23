@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
@@ -69,8 +70,8 @@ export default function NewPalette() {
       name: user.name
     }
 
-    if (colors.length !== 20){
-      alert('Please add exactly 20 colors to the palette')
+    if (colors.length >= 20){
+      alert('Please add not more than 20 colors to the palette')
       return;
     }
 
@@ -82,12 +83,23 @@ export default function NewPalette() {
     const data = {
       title,
       author,
-      colors
+      colors,
+      token
     }
 
     // Submit data
-    if (colors.length === 20 && title && user && token) {
-      console.log(data);
+    if (colors.length <= 20 && title && user && token) {
+      axios.post('https://my-color-palette.herokuapp.com/user/new-palette', data)
+      .then(res => {
+        // Creation successfull when res.data.success is true
+        if(res.data.success)
+          alert('Success!');
+        else 
+          alert('Failed!');
+      })
+      .catch(err => {
+        console.log(err);
+      })
     }
   }
 
