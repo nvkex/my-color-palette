@@ -69,23 +69,27 @@ export default function NewPalette() {
    * res.data.success is false -> Error occured
    */
   const handleCreatePalette = (e) => {
-
     e.preventDefault();
+
     const title = document.querySelector('#title').value;
     const author = {
       id: user._id,
       name: user.name
     }
 
-    if (colors.length >= 20){
-      alert('Please add not more than 20 colors to the palette')
+    if (colors.length >= 20 || colors.length === 0) {
+      alert('Please add not more than 20 colors to the palette');
       return;
     }
 
-    if(!title){
-      alert('Title is required!')
+    if (!title) {
+      alert('Title is required!');
       return;
     }
+
+    // show spinner
+    const spinner = document.querySelector('.spinner');
+    spinner.style.display = 'block';
 
     // Data to be send to server
     const data = {
@@ -97,19 +101,23 @@ export default function NewPalette() {
 
     // Submit data
     if (colors.length <= 20 && title && user && token) {
+
       axios.post('https://my-color-palette.herokuapp.com/user/new-palette', data)
-      .then(res => {
-        
-        // Creation successfull when res.data.success is true
-        if(res.data.success)
-          alert('Success!');
-        else 
-          alert('Failed!');
-      })
-      .catch(err => {
-        console.log(err);
-      })
+        .then(res => {
+          spinner.style.display = 'none';
+          // Creation successfull when res.data.success is true
+          if (res.data.success)
+            alert('Success!');
+          else
+            alert('Failed!');
+          
+        })
+        .catch(err => {
+          console.log(err);
+          spinner.style.display = 'none';
+        })
     }
+
   }
 
 
@@ -135,7 +143,7 @@ export default function NewPalette() {
 
           <label></label>
           <label></label>
-          <label className="text-danger">*Only 20 colors are allowed per palette.</label>
+          <label className="text-danger">*Max 20 colors are allowed per palette.</label>
           <label></label>
           <label></label>
 
@@ -143,6 +151,12 @@ export default function NewPalette() {
             <button id="createBtn" onClick={(e) => handleCreatePalette(e)}>Create</button>
             <button id="cancelBtn" onClick={(e) => handleClearColors(e)}>Clear</button>
           </div>
+
+          <div className="spinner text-muted">
+            <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <p>Saving...</p>
+          </div>
+
 
         </form>
 
