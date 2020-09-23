@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { verifyToken, tokenExpired } = require('../helpers/token');
 
 const User = require('../models/User');
 
@@ -56,19 +57,16 @@ exports.loginController = async (req, res) => {
     res.header('auth-token', token).send({token, user});
 }
 
-exports.verifyToken = (req, res) => {
+exports.tokenVerification = (req, res) => {
     const token = req.header('auth-token');
     if(!token)
         return res.status(401).send({verified: false});
     
-    try{
-        const verified = jwt.verify(token, process.env.JWT_TOKEN);
-        if(verified)
-            return res.status(200).send({verified: true});
-    }
-    catch(err){
-        res.status(400).send({verified: false});
-    }
+    if(verifyToken(token))
+        return res.status(200).send({verified: true});
+    else
+        return res.status(400).send({verified: false});
+    
 }
 
 exports.checkEmail = (req,res) => {
@@ -86,13 +84,9 @@ exports.checkEmail = (req,res) => {
 }
 
 exports.checkTokenExpiry = (req, res) => {
-    const ONE_HOUR = 12960000;
-    const currentDate = new Date().getTime();
-
-    const {token} = req.query;
-    const decodedToken = jwt.verify(token, process.env.JWT_TOKEN);
     
-    if(currentDate - decodedToken.iat > ONE_HOUR)
+    if(tokenExpired(req.query.token))
         res.send({expired: true});
     res.send({expired: false});
+
 }
