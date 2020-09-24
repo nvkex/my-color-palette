@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
+import Modal from '../Modal';
 
 
 export default function NewPalette() {
@@ -65,7 +66,7 @@ export default function NewPalette() {
    * @param {Object} e - passed by default
    * 
    * Handling server responses:
-   * res.data.success is true -> Palette Creates
+   * res.data.success is true -> Palette created
    * res.data.success is false -> Error occured
    */
   const handleCreatePalette = (e) => {
@@ -78,7 +79,7 @@ export default function NewPalette() {
     }
 
     if (colors.length >= 20 || colors.length === 0) {
-      alert('Please add not more than 20 colors to the palette');
+      alert('Please add atleast one and max 20 colors to the palette');
       return;
     }
 
@@ -123,6 +124,8 @@ export default function NewPalette() {
 
 
   return (
+    <div>
+      <Modal />
     <div className="new-palette-container shadow-lg">
       <h1 className=" text-center text-dark">Create new palette</h1>
 
@@ -195,6 +198,7 @@ export default function NewPalette() {
       </div>
 
 
+    </div>
     </div>
   );
 }
