@@ -16,7 +16,7 @@ export default function UserPalettes() {
     useEffect(() => {
 
         if (token && !palettes) {
-            axios.post('http://localhost:3001/user/user-palettes', { token, id: user._id })
+            axios.post('https://my-color-palette.herokuapp.com/user/user-palettes', { token, id: user._id })
                 .then(res => {
                     setPalettes(res.data);
                 })
