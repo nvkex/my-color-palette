@@ -31,6 +31,10 @@ const CustomPaletteSchema = new mongoose.Schema({
     slug:{
         type: String,
         required: true
+    },
+    upvotes:{
+        type: Array,
+        default: []
     }
 });
 
