@@ -1,0 +1,28 @@
+.modalLarge{
+    transition: 0.2s ease-out;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color:rgba(0, 0, 0, 0.2);
+}
+
+.modalBox{
+    margin: auto;
+    width: 320px;
+    height: 24%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+}
+
+.modalBtn{
+    border: 1px solid lightgrey;
+    padding: 2px 20px;
+    border-radius: 4px;
+    background-color: inherit;
+    outline: none;
+}
