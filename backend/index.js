@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const defaultRouter = require('./routes/default');
 const authRouters = require('./routes/auth');
 const userRouters = require('./routes/user');
+const indexRouter = require('./routes/index');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -40,6 +41,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 // Routes
 app.use('/', defaultRouter);
+app.use('/', indexRouter);
 app.use('/auth',authRouters);
 app.use('/user', userRouters);
 
