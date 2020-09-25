@@ -58,7 +58,7 @@ body {
   color: black;
 }
 
-.pallete-card {
+.pallete-card{
   transition: 0.4s;
   margin: 10px 0;
   display: flex;
@@ -71,7 +71,7 @@ body {
   border-radius: 6px;
 }
 
-.pallete-card:hover {
+.pallete-card:hover{
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4) !important;
 }
 
