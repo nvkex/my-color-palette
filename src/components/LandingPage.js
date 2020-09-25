@@ -46,7 +46,7 @@ export default function LandingPage(props) {
           token ? (
             <div className="btn-groups shadow-lg">
               <Link to="/new-palette"><button>{plusSVG} New Palette</button></Link>
-              <Link to="/my-palette"><button>My Palette</button></Link>
+              <Link to="/my-palettes"><button>My Palette</button></Link>
               <Link to="/dashboard"><button>Dashboard</button></Link>
               <Link to="/explore"><button>{exploreSVG} Explore</button></Link>
               <Link to="/logout"><button>Logout</button></Link>
