@@ -1,5 +1,7 @@
 import React from 'react'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
+
+import classes from './Navbar.module.css';
 
 /**
  * Fixed navbar for all pages
@@ -13,9 +15,9 @@ const Navbar = ({history}) => {
     }
 
     return (
-        <div className="navbar shadow-sm">
+        <div className={`${classes.navbar} shadow-sm`}>
             <button onClick={backHandler}>← Back</button>
-            <span className="title"><i>My Color Palette</i></span>
+            <span className={classes.title}><i>My Color Palette</i></span>
             <span>
                 <a href="https://github.com/nvkex/my-color-palette" target='_blank' rel="noopener noreferrer">
                     <i
