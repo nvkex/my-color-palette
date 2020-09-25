@@ -1,0 +1,42 @@
+.userPalette {
+  position: relative;
+  transition: 0.4s;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 240px;
+  width: 323px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.userPalette:hover{
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4) !important;
+}
+
+.paletteSm {
+  overflow: hidden;
+  width: 100%;
+  height: 86%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: row;
+  border-radius: 4px;
+}
+
+.paletteSmItem {
+  z-index: 0;
+  width: 20%;
+  height: 25%;
+}
+
+.paletteDesc {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin: 4px 0;
+}
