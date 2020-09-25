@@ -3,6 +3,21 @@ const CustomPalette = require('../models/CustomPalette');
 const mongoose = require('mongoose');
 const { nanoid } = require('nanoid');
 
+exports.getUserPalettes = (req, res) => {
+    const { id, token } = req.body;
+
+    if(token && !verifyToken(token) && tokenExpired(token))
+        return res.status(400);
+    
+    CustomPalette.find({'author.id':id})
+    .then( data => {
+        res.send({data, success: true});
+    })
+    .catch( err => {
+        res.send({ success :false , err})
+    })
+}
+
 exports.createNewPalette = async (req, res) => {
     const { title, author, colors, token } = req.body;
 
