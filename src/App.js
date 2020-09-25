@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from './actions/AuthActions';
 import axios from 'axios';
 import NewPalette from './components/User/NewPalette';
+import UserPalettes from './components/User/UserPalettes';
 
 /**
  * Verifies token and logs in the user per session.
@@ -61,6 +62,7 @@ function App(props) {
         <Switch>
           <Route exact path="/new-palette" component={NewPalette} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/my-palettes" component={UserPalettes} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/signup" component={SignUp} />
