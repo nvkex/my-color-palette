@@ -13,6 +13,7 @@ import { loginUser } from './actions/AuthActions';
 import axios from 'axios';
 import NewPalette from './components/User/NewPalette';
 import UserPalettes from './components/User/UserPalettes';
+import Explore from './components/Explore';
 
 /**
  * Verifies token and logs in the user per session.
@@ -63,6 +64,7 @@ function App(props) {
           <Route exact path="/new-palette" component={NewPalette} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/my-palettes" component={UserPalettes} />
+          <Route exact path="/explore" component={Explore} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/signup" component={SignUp} />
