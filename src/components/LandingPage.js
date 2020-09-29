@@ -54,6 +54,7 @@ export default function LandingPage(props) {
           ) : (
               <div className="btn-groups shadow-lg">
                 <Link to="/login"><button>Login</button></Link>
+                <Link to="/explore"><button>{exploreSVG} Explore</button></Link>
                 <Link to="/signup"><button>Register</button></Link>
               </div>
             )
