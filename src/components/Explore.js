@@ -17,19 +17,19 @@ export default function Explore() {
 
         return () => { };
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [])
 
     return (
         <div className="main-grid">
             {
                 palettes ? palettes.data.map(palette => (
-                    <Link key={palette._id} className={`${classes.userPalette} shadow-sm`} to="/">
-                        <div className={classes.paletteSm} >
+                    <div key={palette._id} className={`${classes.userPalette} shadow-sm`} to="/">
+                        <Link className={classes.paletteSm} >
                             {palette.colors.map((color, index) => (
                                 <div key={index} className={classes.paletteSmItem} style={{ backgroundColor: color }} ></div>
                             ))}
-                        </div>
+                        </Link>
                         <span>{palette.title}</span>
                         <div className={`${classes.paletteDesc} text-muted`}>
                             <i>
@@ -38,6 +38,12 @@ export default function Explore() {
                                 </svg>&nbsp;
                                 {palette.author.name}
                             </i>
+                            <div className={classes.upvotesContainer}>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" d="M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
+                                </svg>
+                                <span>{palette.upvotes.length}</span>
+                            </div>
                             <span>
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar-event-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
@@ -45,7 +51,7 @@ export default function Explore() {
                                 {palette.createdOn.slice(0, 10)}
                             </span>
                         </div>
-                    </Link>
+                    </div>
                 )) : null
             }
         </div >
