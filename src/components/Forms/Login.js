@@ -1,9 +1,10 @@
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, withRouter } from 'react-router';
 
 import { loginUser } from '../../actions/AuthActions';
+import Modal from '../Modal';
 
 const Login = () => {
 
@@ -11,6 +12,8 @@ const Login = () => {
 
     const { token } = auth;
     const dispatch = useDispatch();
+
+    const [modalData, setModalData] = useState({ display: false });
 
     useEffect(() => {
 
@@ -32,6 +35,12 @@ const Login = () => {
                 const password = document.querySelector('#password').value;
                 const formData = { email, password };
 
+                if (!email || !password) {
+                    setModalData({ display: true, head: "Error!", desc: "Email or Password cannot be empty!", color: "danger" });
+                    loader.style.display = 'none';
+                    return;
+                }
+
                 axios.post('https://my-color-palette.herokuapp.com/auth/login', formData)
                     .then(res => {
                         dispatch(loginUser(res.status, res.data.user, res.data.token));
@@ -44,7 +53,7 @@ const Login = () => {
                         loader.style.display = 'none';
                     })
 
-                
+
             });
         }
 
@@ -63,24 +72,27 @@ const Login = () => {
     }
 
     return (
-        <div className="login">
-            <form className="shadow-lg" action="www.google.com/">
-                <h3 className="text-center">Welcome Back!</h3>
-                <label>Username</label>
-                <input type="text" name="email" placeholder="Username/Email" id="email" />
-                <label />
-                <label>Password</label>
-                <input type="password" name="password" placeholder="No one's looking." id="password" />
+        <div>
+            <Modal data={modalData} setDisplay={setModalData} />
+            <div className="login">
+                <form className="shadow-lg" action="www.google.com/">
+                    <h3 className="text-center">Welcome Back!</h3>
+                    <label>Username</label>
+                    <input type="text" name="email" placeholder="Username/Email" id="email" />
+                    <label />
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="No one's looking." id="password" />
 
-                <span>
-                    <a href="/">Forgot password?</a>
-                </span>
+                    <span>
+                        <a href="/">Forgot password?</a>
+                    </span>
 
-                <label /><label />
-                <input type="submit" value="Login" id="submitForm" />
-                <label></label>
-                <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
-            </form>
+                    <label /><label />
+                    <input type="submit" value="Login" id="submitForm" />
+                    <label></label>
+                    <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+                </form>
+            </div>
         </div>
     )
 }
