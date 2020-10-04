@@ -38,10 +38,18 @@ export default function Explore() {
             { paletteID, id: user._id },
             { headers: { "x-access-token": token } }
         ).then(res => {
-            console.log(res.data);
-        })
-        .catch(err => {
-                console.log(err);
+
+            palettes.data.forEach((palette,index) => {
+                // eslint-disable-next-line eqeqeq
+                if (palette._id == paletteID){
+                    palettes.data[index].upvotes.push(user._id);
+                    setPalettes(palettes);
+                }
+            })
+            console.log(res.data.success);
+
+        }).catch(err => {
+            console.log(err);
         });
 
         console.log('Upvoted ' + paletteID);
