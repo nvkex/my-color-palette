@@ -35,10 +35,13 @@ Save your favorite color combinations into palettes and access them anytime.
 * [x] Display default palettes
 * [x] Display detail palette information
 * [x] User Authentication
-* [ ] User Authorization
+* [x] User Authorization
 * [x] User Registration
 * [x] Expire authentication token
-* [ ] Create custom palettes
+* [x] Create custom palettes
+* [x] Upvote Palettes
+* [x] Explore page for public palettes
+* [ ] Option to make palette private
 * [ ] Update/Delete custom palettes
 * [ ] Add custom palettes as favorite
 * [ ] Admin Panel
