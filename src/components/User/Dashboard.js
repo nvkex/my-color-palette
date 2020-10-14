@@ -7,6 +7,7 @@ export default function Dashboard() {
 
   const auth = useSelector(state => state.authReducer);
   const { token, user } = auth;
+  console.log(user)
 
   // If user is not logged in, redirect to login page
   if (!token || !user) {
@@ -35,7 +36,7 @@ export default function Dashboard() {
             Total Palettes
           </p>
           <p className="text-muted">
-            0
+            {user.palettes.length}
           </p>
 
           <Link to="/my-palettes">
