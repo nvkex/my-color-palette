@@ -17,6 +17,14 @@ const UserSchema = new mongoose.Schema({
     createdOn:{
         type: Date,
         default: new Date()
+    },
+    palettes:{
+        type: Array,
+        default: []
+    },
+    favoritePalettes:{
+        type: Array,
+        default: []
     }
 });
 
