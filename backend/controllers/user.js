@@ -1,4 +1,5 @@
 const { verifyToken, tokenExpired } = require('../helpers/token');
+const User = require('../models/User');
 const CustomPalette = require('../models/CustomPalette');
 const mongoose = require('mongoose');
 const { nanoid } = require('nanoid');
@@ -23,10 +24,17 @@ exports.createNewPalette = async (req, res) => {
 
     const slug = await nanoid(10);
 
-    if (!verifyToken(token) && tokenExpired(token))
+    if (!verifyToken(token) || tokenExpired(token))
         res.status(400);
 
-    CustomPalette.create({ title, author, colors, slug })
+    const _id = mongoose.Types.ObjectId();
+
+    User.updateOne(
+        { _id: mongoose.Types.ObjectId(author.id) },
+        { $addToSet: { palettes: [_id] } }
+    )
+
+    CustomPalette.create({ _id, title, author, colors, slug })
         .then(data => {
             res.status(200).send({ data, success: true });
         })
@@ -34,14 +42,18 @@ exports.createNewPalette = async (req, res) => {
             console.log(err)
             res.status(400).send({ success: false });
         })
-
 }
 
 exports.deletePalette = (req, res) => {
-    const { id, token } = req.body;
+    const { id, token, authorId } = req.body;
 
-    if (!verifyToken(token) && tokenExpired(token))
+    if (!verifyToken(token) || tokenExpired(token))
         res.status(400);
+
+    User.updateOne(
+        { _id:  mongoose.Types.ObjectId(authorId) },
+        { $pull: { palettes: [id] } }
+    )
 
     CustomPalette.deleteOne({ _id: mongoose.Types.ObjectId(id) })
         .then(data => {
@@ -55,7 +67,7 @@ exports.deletePalette = (req, res) => {
 
 exports.upvotePalette = (req, res) => {
     const { paletteID, id } = req.body;
-    
+
     CustomPalette.updateOne(
         { _id: new mongoose.Types.ObjectId(paletteID) },
         { $addToSet: { upvotes: [id] } }
