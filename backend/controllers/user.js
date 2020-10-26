@@ -20,7 +20,7 @@ exports.getUserPalettes = (req, res) => {
 }
 
 exports.createNewPalette = async (req, res) => {
-    const { title, author, colors, token } = req.body;
+    var { title, author, colors, token, private } = req.body;
 
     const slug = await nanoid(10);
 
@@ -34,7 +34,10 @@ exports.createNewPalette = async (req, res) => {
         { $addToSet: { palettes: [_id] } }
     )
 
-    CustomPalette.create({ _id, title, author, colors, slug })
+    if (private == null)
+        private = false;
+
+    CustomPalette.create({ _id, title, author, colors, slug, private })
         .then(data => {
             res.status(200).send({ data, success: true });
         })
@@ -51,7 +54,7 @@ exports.deletePalette = (req, res) => {
         res.status(400);
 
     User.updateOne(
-        { _id:  mongoose.Types.ObjectId(authorId) },
+        { _id: mongoose.Types.ObjectId(authorId) },
         { $pull: { palettes: [id] } }
     )
 
@@ -80,4 +83,29 @@ exports.upvotePalette = (req, res) => {
         .catch(err => {
             return res.send({ message: err })
         })
+}
+
+exports.editPalette = (req, res) => {
+
+    const { id, title, colors, private } = req.body;
+    var updates = { lastUpdatedOn : new Date() };
+
+    if (title != null)
+        updates.title = title;
+    if (colors.length != 0)
+        updates.colors = colors;
+    if (private != null)
+        updates.private = private;
+
+    CustomPalette.updateOne(
+        { _id: new mongoose.Types.ObjectId(id) },
+        updates
+    ).then(data => {
+        if (data.n === 1)
+                return res.status(200).send({ success: true })
+            return res.status(400).send({ success: false })
+    }).catch(err => {
+        return res.send({ message: err })
+    })
+
 }
