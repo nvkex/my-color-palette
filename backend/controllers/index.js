@@ -1,7 +1,7 @@
 const CustomPalette = require('../models/CustomPalette');
 
 exports.explorePalette = (req, res) => {
-    CustomPalette.find({})
+    CustomPalette.find({private: false})
     .then(data => {
         res.send({data});
     })
