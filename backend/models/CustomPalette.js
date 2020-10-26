@@ -35,6 +35,10 @@ const CustomPaletteSchema = new mongoose.Schema({
     upvotes:{
         type: Array,
         default: []
+    },
+    lastUpdatedOn:{
+        type: Date,
+        default: new Date()
     }
 });
 
