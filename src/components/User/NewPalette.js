@@ -76,6 +76,7 @@ export default function NewPalette() {
 
 
     const title = document.querySelector('#title').value;
+    const isPrivate = document.querySelector('#privateCheck').checked;
     const author = {
       id: user._id,
       name: user.name
@@ -102,7 +103,8 @@ export default function NewPalette() {
       title,
       author,
       colors,
-      token
+      token,
+      private: isPrivate
     }
 
     // Submit data
@@ -152,6 +154,13 @@ export default function NewPalette() {
             <label></label>
             <label></label>
             <label className="text-danger">*Max 20 colors are allowed per palette.</label>
+            <label></label>
+            <label></label>
+
+            <label class="private-box">Private
+              <input id="privateCheck" type="checkbox"/>
+              <span class="checkmark"></span>
+            </label>
             <label></label>
             <label></label>
 
