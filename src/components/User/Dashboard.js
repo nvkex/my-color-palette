@@ -7,23 +7,54 @@ export default function Dashboard() {
 
   const auth = useSelector(state => state.authReducer);
   const { token, user } = auth;
-  console.log(user)
 
   // If user is not logged in, redirect to login page
   if (!token || !user) {
     return <Redirect to="/login" />
   }
 
+  const editProfileHandler = () => {
+    const name = document.querySelector('#userName');
+    const email = document.querySelector('#userEmail');
+    const editBtn = document.querySelector('#editBtn');
+    const saveBtn = document.querySelector('#saveBtn');
+    name.innerHTML = `<input type="text" id="nameInput" value="${user.name}"/>`;
+    email.innerHTML = `<input type="text" id="emailInput" value="${user.email}"/>`;
+    editBtn.style.display = 'none';
+    saveBtn.style.display = 'block';
+  }
+
+  const saveProfileHandler = () => {
+    const name = document.querySelector('#userName');
+    const email = document.querySelector('#userEmail');
+    const editBtn = document.querySelector('#editBtn');
+    const saveBtn = document.querySelector('#saveBtn');
+
+    // Update info
+
+    name.innerHTML = `<span>${user.name}</span>`;
+    email.innerHTML = ` <span>${user.email}</span>`;
+    editBtn.style.display = 'block';
+    saveBtn.style.display = 'none';
+  }
+
+
   return (
     <div className="dashboard">
 
       <div className="profile-section shadow">
         <img src="./static/default_profile.png" alt="profile_picture" />
-        <div>
+        <div className="text-center" id="userName">
           <span>{user.name}</span>
         </div>
-        <div>
+        <div className="text-center" id="userEmail">
           <span>{user.email}</span>
+        </div>
+        <div className="text-center" id="editBtn">
+          <button onClick={editProfileHandler}>Edit</button>
+        </div>
+        <div className="text-center" id="saveBtn" style={{display:'none'}}>
+        <button onClick={saveProfileHandler}>Save</button>
         </div>
       </div>
 
