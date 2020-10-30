@@ -53,8 +53,14 @@ export default function Dashboard() {
         <div className="text-center" id="editBtn">
           <button onClick={editProfileHandler}>Edit</button>
         </div>
-        <div className="text-center" id="saveBtn" style={{display:'none'}}>
-        <button onClick={saveProfileHandler}>Save</button>
+        <div className="text-center" id="saveBtn" style={{ display: 'none' }}>
+          <button onClick={saveProfileHandler}>Save</button>
+        </div>
+        <div className="text-muted info-small">
+          <p>Joined On: {new Date(user.createdOn).toString().slice(4, 10)}, {new Date(user.createdOn).getFullYear()}</p>
+        </div>
+        <div className="text-muted info-small">
+          <p>Last Updated On: {new Date(user.lastUpdatedOn).toString().slice(4, 10)}, {new Date(user.lastUpdatedOn).getFullYear()}</p>
         </div>
       </div>
 
