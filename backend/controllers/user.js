@@ -1,8 +1,12 @@
-const { verifyToken, tokenExpired } = require('../helpers/token');
-const User = require('../models/User');
-const CustomPalette = require('../models/CustomPalette');
 const mongoose = require('mongoose');
 const { nanoid } = require('nanoid');
+const bcrypt = require('bcryptjs');
+
+const { verifyToken, tokenExpired } = require('../helpers/token');
+
+// Get Models
+const User = require('../models/User');
+const CustomPalette = require('../models/CustomPalette');
 
 exports.getUserPalettes = (req, res) => {
     const { id, token } = req.body;
@@ -98,6 +102,33 @@ exports.editPalette = (req, res) => {
         updates.private = private;
 
     CustomPalette.updateOne(
+        { _id: new mongoose.Types.ObjectId(id) },
+        updates
+    ).then(data => {
+        if (data.n === 1)
+                return res.status(200).send({ success: true })
+            return res.status(400).send({ success: false })
+    }).catch(err => {
+        return res.send({ message: err })
+    })
+
+}
+
+exports.updateUserInfo = async (req, res) => {
+
+    const { id, name, email, password } = req.body;
+    var updates = { lastUpdatedOn : new Date() };
+
+    const salt = await bcrypt.genSalt(10);
+
+    if (name != null)
+        updates.name = name;
+    if (email != null)
+        updates.email = email;
+    if (password != null)
+        updates.password = await bcrypt.hash(password, salt);;
+
+    User.updateOne(
         { _id: new mongoose.Types.ObjectId(id) },
         updates
     ).then(data => {
