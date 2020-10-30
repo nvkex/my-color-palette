@@ -25,7 +25,11 @@ const UserSchema = new mongoose.Schema({
     favoritePalettes:{
         type: Array,
         default: []
-    }
+    },
+    lastUpdatedOn: {
+        type: Date,
+        default: new Date()
+    } 
 });
 
 module.exports = mongoose.model('User', UserSchema);
