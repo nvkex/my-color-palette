@@ -14,14 +14,13 @@ body {
   background-image: url(/static/stars-opacity.0979c1.svg);
 }
 
-
 @media (max-width: 630px) {
   .main-grid {
     margin: 40px 0px !important;
   }
 }
 
-@media (max-width: 970px) and (min-width: 630px){
+@media (max-width: 970px) and (min-width: 630px) {
   .main-grid {
     margin: 40px 20px !important;
   }
@@ -33,11 +32,11 @@ body {
   }
 }
 
-.spinner{
+.spinner {
   display: none;
   margin: 20px 0;
 }
-.spinner .lds-ring{
+.spinner .lds-ring {
   display: block;
   margin: 8px 0;
 }
@@ -58,7 +57,7 @@ body {
   color: black;
 }
 
-.pallete-card{
+.pallete-card {
   transition: 0.4s;
   margin: 10px 0;
   display: flex;
@@ -71,7 +70,7 @@ body {
   border-radius: 6px;
 }
 
-.pallete-card:hover{
+.pallete-card:hover {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4) !important;
 }
 
@@ -253,18 +252,22 @@ body {
   width: 100%;
 }
 
-.profile-section div button{
+.profile-section div button {
   background-color: inherit;
-  border: 1px solid  #2c3a47;
+  border: 1px solid #2c3a47;
   border-radius: 4px;
   outline: none;
   margin: 20px 0;
-  padding:2px 20px;
+  padding: 2px 20px;
 }
 
-.profile-section div button:hover{
+.profile-section div button:hover {
   color: white;
   background-color: #2c3a47;
+}
+
+.info-small *{
+  font-size: 16px;
 }
 
 .user-palette-detail {
@@ -273,19 +276,19 @@ body {
   flex-wrap: wrap;
 }
 
-.heading{
+.heading {
   font-size: 30px !important;
 }
 
-.user-palette-detail div{
-  margin:0 10px;
+.user-palette-detail div {
+  margin: 0 10px;
   font-size: 20px;
   flex-grow: 2;
 }
 
-.user-palette-detail div button{
+.user-palette-detail div button {
   background-color: inherit;
-  border: 1px solid  #2c3a47;
+  border: 1px solid #2c3a47;
   border-radius: 10px;
   outline: none;
   margin: 20px 0;
@@ -293,83 +296,85 @@ body {
   width: 80%;
 }
 
-.user-palette-detail div button:hover{
+.user-palette-detail div button:hover {
   color: white;
   background-color: #2c3a47;
 }
 
-
 /* DASHBOARD end */
 
 /* NEW PALETTE Page */
-.new-palette-container{
+.new-palette-container {
   margin: 40px;
   padding: 20px 40px;
   border-radius: 4px;
   background-color: white;
-  min-height:600px;
+  min-height: 600px;
   min-width: 280px;
 }
 
-.form-container{
+.form-container {
   display: flex;
   margin: 10px 0;
   flex-wrap: wrap;
 }
 
-.form-container > *{
+.form-container > * {
   flex-grow: 1;
 }
 
-.form-container form{
+.form-container form {
   padding: 20px 0;
   display: flex;
   flex-direction: column;
 }
 
-.form-container form input[type="text"]{
-  width:60%;
+.form-container form input[type="text"] {
+  width: 60%;
   font-size: 20px;
   padding: 10px 40px;
-  border:1px solid lightgrey;
+  border: 1px solid lightgrey;
   outline: none;
 }
 
-
-.form-container form button, #createBtn, #cancelBtn{
-  color:white;
+.form-container form button,
+#createBtn,
+#cancelBtn {
+  color: white;
   font-size: 20px;
-  border:1px solid #3c40c6;
+  border: 1px solid #3c40c6;
   background-color: #3c40c6;
   padding: 10px 40px;
   outline: none;
 }
 
-.form-container .color-preview-section{
+.form-container .color-preview-section {
   padding: 20px;
 }
 
-#createBtn,#cancelBtn{
+#createBtn,
+#cancelBtn {
   margin: 10px 10px 0px 0;
-  border:1px solid #2c3a47;
+  border: 1px solid #2c3a47;
   background-color: #2c3a47;
 }
 
-#createBtn:hover, #cancelBtn:hover{
-  border:1px solid #2c3a47ee;
+#createBtn:hover,
+#cancelBtn:hover {
+  border: 1px solid #2c3a47ee;
   background-color: #2c3a47ee;
 }
 
-.action-btns{
+.action-btns {
   display: flex;
   flex-wrap: wrap;
 }
 
-.color-preview-section .pallete-card:hover{
+.color-preview-section .pallete-card:hover {
   box-shadow: none !important;
-} 
+}
 
-.color-code-list{
+.color-code-list {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -377,18 +382,18 @@ body {
   height: 160px;
 }
 
-.color-code-container{
+.color-code-container {
   margin-top: 4px;
   margin-right: 6px;
 }
 
-.new-color-preview{
-  border:1px solid lightgrey;
-  width:80px;
+.new-color-preview {
+  border: 1px solid lightgrey;
+  width: 80px;
   height: 40px;
 }
 
-#delColor{
+#delColor {
   border-radius: 50%;
   outline: none;
   background-color: inherit;
@@ -396,7 +401,7 @@ body {
   color: lightcoral;
 }
 
-#delColor:hover{
+#delColor:hover {
   background-color: lightcoral;
   color: white;
 }
@@ -440,7 +445,7 @@ body {
 
 /* When the checkbox is checked, add a blue background */
 .private-box input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
