@@ -7,7 +7,8 @@ const {
     createNewPalette,
     deletePalette,
     upvotePalette,
-    editPalette
+    editPalette,
+    updateUserInfo
 } = require('../controllers/user');
 
 router.post('/new-palette', createNewPalette);
@@ -18,6 +19,8 @@ router.post('/user-palettes', getUserPalettes);
 
 router.post('/upvote', [verifyToken, checkExpiry], upvotePalette);
 
-router.post('/edit', [verifyToken, checkExpiry], editPalette)
+router.post('/edit', [verifyToken, checkExpiry], editPalette);
+
+router.post('/update-user', [verifyToken, checkExpiry], updateUserInfo);
 
 module.exports = router;
