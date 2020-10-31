@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 
 import { defaultPalettesReducer } from './reducers/defPaletteReducers';
 import {authReducer} from './reducers/AuthReducer';
+import {paletteReducer} from './reducers/PaletteReducer';
 
 const initialState = {};
 
 const reducer = combineReducers({
     defaultPalettes: defaultPalettesReducer,
-    authReducer: authReducer
+    authReducer: authReducer,
+    paletteReducer: paletteReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
