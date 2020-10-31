@@ -1,36 +1,26 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
+import { getAllPalettes } from '../../actions/PaletteActions';
 
 import classes from './UserPalettes.module.css';
 
 export default function UserPalettes() {
 
+    const dispatch = useDispatch();
     const auth = useSelector(state => state.authReducer);
     const { token, user } = auth;
 
-    const [palettes, setPalettes] = useState();
-
-    useEffect(() => {
-
-        if (token && !palettes) {
-            axios.post('https://my-color-palette.herokuapp.com/user/user-palettes', { token, id: user._id })
-                .then(res => {
-                    setPalettes(res.data);
-                })
-                .catch(err => console.log(err));
-        }
-
-        return () => { };
-    },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [])
+    const { userPalettes : palettes } = useSelector(state => state.paletteReducer);
 
     // If user is not logged in, redirect to login page
     if (!token || !user) {
         return <Redirect to="/login" />
+    }
+
+    if(!palettes){
+        dispatch(getAllPalettes(token, user._id));
     }
 
     const upvoteHandler = (id) => {
@@ -42,7 +32,7 @@ export default function UserPalettes() {
             {
                 palettes ? palettes.data.map(palette => (
                     <div key={palette._id} className={`${classes.userPalette} shadow-sm`}>
-                        <Link className={classes.paletteSm} to="/" >
+                        <Link className={classes.paletteSm} to={`/palette/${palette.slug}`} >
                             {palette.colors.map((color, index) => (
                                 <div key={index} className={classes.paletteSmItem} style={{ backgroundColor: color }} ></div>
                             ))}
